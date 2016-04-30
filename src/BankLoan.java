@@ -30,7 +30,6 @@ public class BankLoan extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         lblBankLoan = new javax.swing.JLabel();
         lblAmount = new javax.swing.JLabel();
-        txtAmount = new javax.swing.JTextField();
         lblLoanType = new javax.swing.JLabel();
         RdCar = new javax.swing.JRadioButton();
         RdHouse = new javax.swing.JRadioButton();
@@ -38,6 +37,13 @@ public class BankLoan extends javax.swing.JFrame {
         cbxNbreOfYearsCars = new javax.swing.JComboBox<>();
         lblNbreOfYearshouse = new javax.swing.JLabel();
         cbxNbreOfYearsHouse = new javax.swing.JComboBox<>();
+        lblInterest = new javax.swing.JLabel();
+        btnSubmit = new javax.swing.JButton();
+        lblLoan = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cbxInterest = new javax.swing.JComboBox<>();
+        btnNewOrder = new javax.swing.JButton();
+        cbxAmount = new javax.swing.JComboBox<>();
 
         jLabel1.setText("jLabel1");
 
@@ -49,15 +55,10 @@ public class BankLoan extends javax.swing.JFrame {
 
         lblAmount.setText("Amount :");
 
-        txtAmount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAmountActionPerformed(evt);
-            }
-        });
-
         lblLoanType.setText("Loan Type :");
 
         buttonGroup1.add(RdCar);
+        RdCar.setSelected(true);
         RdCar.setText("Car Loan");
         RdCar.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -80,7 +81,7 @@ public class BankLoan extends javax.swing.JFrame {
 
         lblNbrOfYearsCars.setText("Number Of Years For Cars :");
 
-        cbxNbreOfYearsCars.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", " " }));
+        cbxNbreOfYearsCars.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", " " }));
         cbxNbreOfYearsCars.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxNbreOfYearsCarsActionPerformed(evt);
@@ -89,47 +90,85 @@ public class BankLoan extends javax.swing.JFrame {
 
         lblNbreOfYearshouse.setText("Number Of Years For House :");
 
-        cbxNbreOfYearsHouse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "20", "30", "40", "50" }));
+        cbxNbreOfYearsHouse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "20", "30", " " }));
+
+        lblInterest.setText("Interest :");
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setText("Monthly Payment");
+
+        cbxInterest.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5%", "6%", "7%" }));
+
+        btnNewOrder.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
+        btnNewOrder.setText("New Order");
+        btnNewOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewOrderActionPerformed(evt);
+            }
+        });
+
+        cbxAmount.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "50 000$", "100 000$", "200 000$" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblBankLoan, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAmount)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblLoanType)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(RdCar)
-                        .addGap(68, 68, 68)
-                        .addComponent(RdHouse))
+                        .addGap(20, 20, 20)
+                        .addComponent(lblBankLoan, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNbrOfYearsCars)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbxNbreOfYearsCars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblInterest)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbxInterest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(btnSubmit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblLoan, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNbreOfYearshouse)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxNbreOfYearsHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 119, Short.MAX_VALUE))
+                        .addComponent(cbxNbreOfYearsHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(lblAmount)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbxAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(lblLoanType)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(RdCar)))
+                        .addGap(68, 68, 68)
+                        .addComponent(RdHouse)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btnNewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblBankLoan, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAmount)
-                    .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(cbxAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLoanType)
                     .addComponent(RdCar)
@@ -142,22 +181,33 @@ public class BankLoan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNbreOfYearshouse, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxNbreOfYearsHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 122, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblInterest)
+                    .addComponent(cbxInterest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLoan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(31, 31, 31))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnNewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAmountActionPerformed
 
     private void RdCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RdCarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RdCarActionPerformed
 
     private void cbxNbreOfYearsCarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNbreOfYearsCarsActionPerformed
-        // TODO add your handling code here:
+        if(cbxNbreOfYearsCars.getSelectedItem().equals("One")){
+            cbxInterest.equals(6);
+        }
     }//GEN-LAST:event_cbxNbreOfYearsCarsActionPerformed
 
     private void RdCarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RdCarItemStateChanged
@@ -184,6 +234,22 @@ public class BankLoan extends javax.swing.JFrame {
         cbxNbreOfYearsCars.setEnabled(true);   
         }        // TODO add your handling code here:
     }//GEN-LAST:event_RdHouseItemStateChanged
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewOrderActionPerformed
+ cbxAmount.setEnabled(true);
+ cbxInterest.setEnabled(true);
+        RdCar.setEnabled(true);
+        RdHouse.setEnabled(true);
+        btnSubmit.setEnabled(true);
+        lblLoan.setVisible(false);
+        cbxAmount.setSelectedIndex(0);
+        cbxInterest.setSelectedIndex(0);
+        RdCar.setSelected(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewOrderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,15 +289,21 @@ public class BankLoan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton RdCar;
     private javax.swing.JRadioButton RdHouse;
+    private javax.swing.JButton btnNewOrder;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbxAmount;
+    private javax.swing.JComboBox<String> cbxInterest;
     private javax.swing.JComboBox<String> cbxNbreOfYearsCars;
     private javax.swing.JComboBox<String> cbxNbreOfYearsHouse;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAmount;
     private javax.swing.JLabel lblBankLoan;
+    private javax.swing.JLabel lblInterest;
+    private javax.swing.JLabel lblLoan;
     private javax.swing.JLabel lblLoanType;
     private javax.swing.JLabel lblNbrOfYearsCars;
     private javax.swing.JLabel lblNbreOfYearshouse;
-    private javax.swing.JTextField txtAmount;
     // End of variables declaration//GEN-END:variables
 }
